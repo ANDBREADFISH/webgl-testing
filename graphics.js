@@ -52,12 +52,11 @@ function startAnimation(gl, program) {
     var B = 0;
     var S = 1;
     function frame(timeStart) {
-        timeStart *= 0.001;
         var deltaTime = timeStart - timePrev;
-        console.log(deltaTime);
+        console.log('fps:', 1000 / deltaTime);
         timePrev = timeStart;
         var n = 3;
-        var rSpeed = 1;
+        var rSpeed = 0.1 * (Math.PI / 180);
         var verticesColors = new Float32Array([
             /* x,    y,    z,   r,   g,   b */
             0.5, 0.5, 0.0, 1.0, 0.0, 0.0,

@@ -94,7 +94,7 @@ function startAnimation(gl, program) {
     var S = 1;
     function frame(timeStart) {
         var deltaTime = timeStart - timePrev;
-        console.log('fps:', 1000 / deltaTime);
+        // console.log('fps:', 1000 / deltaTime)
         timePrev = timeStart;
         var n = 3;
         var rSpeed = deg2rad(180) / 1000;
@@ -159,7 +159,9 @@ function startAnimation(gl, program) {
         gl.uniformMatrix4fv(translation, false, t_matrix);
         gl.uniformMatrix4fv(rotation, false, r_matrix);
         gl.uniformMatrix4fv(scale, false, s_matrix);
-        gl.clearColor(0.0, 0.0, 0.0, 1.0);
+        var bC = HSL2RGB((Math.cos(timeStart / 1000) + 1) / 2, 0.25, 0.125);
+        var bCr = bC[0], bCg = bC[1], bCb = bC[2];
+        gl.clearColor(bCr, bCg, bCb, 1.0);
         gl.enable(gl.DEPTH_TEST);
         gl.clear(gl.COLOR_BUFFER_BIT);
         gl.drawArrays(gl.TRIANGLES, 0, n);

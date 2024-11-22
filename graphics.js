@@ -29,9 +29,9 @@ function compile(gl, vshader, fshader) {
     gl.linkProgram(program);
     gl.useProgram(program);
     // Log errors (optional)
-    console.log('vertex shader:', gl.getShaderInfoLog(vs) || 'OK');
-    console.log('fragment shader:', gl.getShaderInfoLog(fs) || 'OK');
-    console.log('program:', gl.getProgramInfoLog(program) || 'OK');
+    console.log('1vertex shader:', gl.getShaderInfoLog(vs) || 'OK');
+    console.log('1fragment shader:', gl.getShaderInfoLog(fs) || 'OK');
+    console.log('1program:', gl.getProgramInfoLog(program) || 'OK');
     return program;
 }
 var vshader = "\nprecision mediump float;\nattribute vec4 position;\nuniform mat4 translation;\nuniform mat4 rotation;\nuniform mat4 scale;\n\nattribute vec4 color;\nvarying vec4 v_color;\n\nvoid main() {\n    gl_Position = (scale * (rotation * translation)) * position;\n    v_color = color;\n}\n";

@@ -26,9 +26,9 @@ function compile(gl: WebGLRenderingContext, vshader: string, fshader: string) {
     gl.useProgram(program);
     
     // Log errors (optional)
-    console.log('vertex shader:', gl.getShaderInfoLog(vs) || 'OK');
-    console.log('fragment shader:', gl.getShaderInfoLog(fs) || 'OK');
-    console.log('program:', gl.getProgramInfoLog(program) || 'OK');
+    console.log('1vertex shader:', gl.getShaderInfoLog(vs) || 'OK');
+    console.log('1fragment shader:', gl.getShaderInfoLog(fs) || 'OK');
+    console.log('1program:', gl.getProgramInfoLog(program) || 'OK');
     
     return program;
 }

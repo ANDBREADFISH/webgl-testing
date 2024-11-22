@@ -171,9 +171,18 @@ if (camera == null) { throw new Error('Could not find camera location') }
 var cameraMatrix = perspective({fov: 30, ratio: 1, near: 1, far: 100})
 cameraMatrix.translateSelf(0, 0, -5)
 
-setInterval(() => {
+function animation3D(gl2: WebGLRenderingContext) {
+
+    function frame3D() {
     cameraMatrix.rotateSelf(.4, .8, .4)
     gl2.uniformMatrix4fv(camera, false, cameraMatrix.toFloat32Array())
     gl2.clear(gl2.COLOR_BUFFER_BIT | gl2.DEPTH_BUFFER_BIT)
     gl2.drawElements(gl2.LINE_LOOP, n, gl2.UNSIGNED_BYTE, 0)
-}, 16)
+
+    requestAnimationFrame(frame3D)
+    }
+
+    requestAnimationFrame(frame3D)
+}
+
+animation3D(gl2)

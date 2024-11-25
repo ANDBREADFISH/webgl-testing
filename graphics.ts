@@ -1,7 +1,7 @@
 const CANVAS = document.getElementById("screen") as HTMLCanvasElement | null;
 if (CANVAS === null) throw new Error("Could not find canvas");
 
-const gl = CANVAS.getContext('webgl');
+var gl = CANVAS.getContext('webgl');
 if (gl === null) throw new Error("Could not find webgl context");
 
 function compile(gl: WebGLRenderingContext, vshader: string, fshader: string) {

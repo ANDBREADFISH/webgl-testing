@@ -1,37 +1,37 @@
 var CANVAS2 = document.getElementById("screen2");
 if (CANVAS2 === null)
     throw new Error("Could not find CANVAS2");
-var gl2 = CANVAS2.getContext('webgl2');
+var gl2 = CANVAS2.getContext('webgl');
 if (gl2 === null)
     throw new Error("Could not find webgl2 context");
-function compile(gl, vshader, fshader) {
+function compile(gl2, vshader, fshader) {
     // Compile vertex shader
-    var vs = gl.createShader(gl.VERTEX_SHADER);
+    var vs = gl2.createShader(gl2.VERTEX_SHADER);
     if (vs == null) {
         return;
     }
-    gl.shaderSource(vs, vshader);
-    gl.compileShader(vs);
+    gl2.shaderSource(vs, vshader);
+    gl2.compileShader(vs);
     // Compile fragment shader
-    var fs = gl.createShader(gl.FRAGMENT_SHADER);
+    var fs = gl2.createShader(gl2.FRAGMENT_SHADER);
     if (fs == null) {
         return;
     }
-    gl.shaderSource(fs, fshader);
-    gl.compileShader(fs);
+    gl2.shaderSource(fs, fshader);
+    gl2.compileShader(fs);
     // Create and launch the WebGL program
-    var program = gl.createProgram();
+    var program = gl2.createProgram();
     if (program == null) {
         return;
     }
-    gl.attachShader(program, vs);
-    gl.attachShader(program, fs);
-    gl.linkProgram(program);
-    gl.useProgram(program);
+    gl2.attachShader(program, vs);
+    gl2.attachShader(program, fs);
+    gl2.linkProgram(program);
+    gl2.useProgram(program);
     // Log errors (optional)
-    console.log('2vertex shader:', gl.getShaderInfoLog(vs) || 'OK');
-    console.log('2fragment shader:', gl.getShaderInfoLog(fs) || 'OK');
-    console.log('2program:', gl.getProgramInfoLog(program) || 'OK');
+    console.log('2vertex shader:', gl2.getShaderInfoLog(vs) || 'OK');
+    console.log('2fragment shader:', gl2.getShaderInfoLog(fs) || 'OK');
+    console.log('2program:', gl2.getProgramInfoLog(program) || 'OK');
     return program;
 }
 function perspective(options) {
